@@ -1,0 +1,22 @@
+<dx-data-grid [dataSource]="tasksDataSource" [showBorders]="true" [columnAutoWidth]="true">
+    <dxi-column dataField="Subject" dataType="string"></dxi-column>
+    <dxi-column dataField="StartDate" dataType="date"></dxi-column>
+    <dxi-column dataField="DueDate" dataType="date"></dxi-column>
+    <dxi-column dataField="Priority" dataType="string" [groupIndex]="0"></dxi-column>
+    <dxi-column caption="Completed" dataType="boolean" [calculateCellValue]="completedValue"></dxi-column>
+</dx-data-grid>
+<!-- <dx-data-grid>
+    <dxi-column caption="A">
+        <dxi-column dataField="A1"></dxi-column>
+        <dxi-column dataField="A2"></dxi-column>
+        <dxi-column caption="A3">
+            <dxi-column dataField="A31"></dxi-column>
+            <dxi-column dataField="A32"></dxi-column>
+            <dxi-column caption="A33">
+                <dxi-column dataField="A331"></dxi-column>
+                <dxi-column dataField="A332"></dxi-column>
+                <dxi-column dataField="A333"></dxi-column>
+            </dxi-column>
+        </dxi-column>
+    </dxi-column>
+</dx-data-grid> -->
