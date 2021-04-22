@@ -1,4 +1,9 @@
 # Node.js with Angular
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'DevExpressGrid'
+    customCommand: 'ng test'
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
