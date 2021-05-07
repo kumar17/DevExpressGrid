@@ -1,0 +1,53 @@
+<!-- <p>autotext works!</p>
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Custom Item Template and Data Source Usage</div>
+    <div class="dx-field">
+        <div class="dx-field-label">State</div>
+        <div class="dx-field-value">
+            <dx-autocomplete title="text" placeholder="Type state name..." valueExpr="State_Long"  
+             [dataSource]="states"
+                [(value)]="state" (onValueChanged)="updateEmployeeInfo()">
+                <div *dxTemplate="let item of 'item';index as i;">
+                    <span>{{item.State_Long}} -({{item.State_Short}})</span>
+                    <div> <span>{{states.length}}</span> </div>
+                </div>
+                
+            </dx-autocomplete>
+
+        </div>
+    </div>
+</div>
+<button>click me </button>
+
+<dx-filter-builder [fields]="fields" [(value)]="filter" [groupOperations]="groupOperations"
+    [customOperations]="customOperations" (onInitialized)="updateTexts($event)" (onValueChanged)="updateTexts($event)">
+    <dx-check-box *dxTemplate="let condition of 'tagBoxTemplate'" [value]="true" [width]="80" text="Check">
+    </dx-check-box>
+
+</dx-filter-builder> -->
+
+<table>
+
+    <tr>
+        <td>
+            User ID with dynamic data:
+        </td>
+        <td>
+            <input type="text" (keyup)="getUserIdsFirstWay($event)" [(ngModel)]="usertext" id="userIdFirstWay"
+                list="dynmicUserIds" />
+            <div *ngIf="showhide">
+                <div style="border: 2px solid red;">header comes here
+                    <input type="checkbox" value="axbxnbxnn" />
+                    <input type="button" value="save">
+                </div>
+                <div style="height: 400px;overflow: auto;">
+                    <div *ngFor="let item of userList1" (click)="selectrecord(item)"> {{item}}</div>
+                </div>
+                <div style="border: 2px solid black;">
+                    <app-devexpressauto></app-devexpressauto>
+
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>

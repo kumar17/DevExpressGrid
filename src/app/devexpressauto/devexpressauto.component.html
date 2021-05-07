@@ -1,0 +1,11 @@
+<p>devexpressauto works!</p>
+<dx-autocomplete
+    [dataSource]="autocompleteData"
+    valueExpr="country"
+    placeholder="Type country name..."
+    itemTemplate="full">
+    <div *dxTemplate="let itemObj of 'full'">
+        <p>Country: <b>{{itemObj.country}}</b></p>
+        <p style="color:grey;">Capital: <b>{{itemObj.capital}}</b></p>
+    </div>
+</dx-autocomplete>

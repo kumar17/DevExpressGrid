@@ -1,10 +1,10 @@
-<dx-data-grid [dataSource]="tasksDataSource" [showBorders]="true" [columnAutoWidth]="true">
+<!-- <dx-data-grid [dataSource]="tasksDataSource" [showBorders]="true" [columnAutoWidth]="true">
     <dxi-column dataField="Subject" dataType="string"></dxi-column>
     <dxi-column dataField="StartDate" dataType="date"></dxi-column>
     <dxi-column dataField="DueDate" dataType="date"></dxi-column>
     <dxi-column dataField="Priority" dataType="string" [groupIndex]="0"></dxi-column>
     <dxi-column caption="Completed" dataType="boolean" [calculateCellValue]="completedValue"></dxi-column>
-</dx-data-grid>
+</dx-data-grid> -->
 <!-- <dx-data-grid>
     <dxi-column caption="A">
         <dxi-column dataField="A1"></dxi-column>
@@ -20,3 +20,43 @@
         </dxi-column>
     </dxi-column>
 </dx-data-grid> -->
+<!-- <dx-data-grid id="tasksDataSource" [dataSource]="tasksDataSource"   [columns] = "columns">
+    <dxo-selection
+            mode="multiple"
+            [recursive]="recursiveSelectionEnabled">
+    </dxo-selection>
+    <div class="option">
+        <dx-check-box 
+            [(value)]="recursiveSelectionEnabled"
+            text="Recursive Selection"> 
+        </dx-check-box>
+    </div>
+</dx-data-grid>  -->
+
+<!-- <dx-data-grid [dataSource]="test">
+    <dxi-column type="buttons" caption="link" >
+        <dxi-button template="myCommand">
+            <div *dxTemplate="let data of 'myCommand'">
+                <a href="#" (click)="logMyCommandClick()">My command</a>
+            </div>
+        </dxi-button>
+    </dxi-column>
+    <dxi-column caption="LastName" dataField="LastName1"></dxi-column>
+</dx-data-grid> -->
+
+<dx-data-grid [dataSource]="test">
+    <!-- <dxo-editing mode="cell" [allowUpdating]="true">
+    </dxo-editing>
+    <dxi-column dataField="LastName1" caption="Assignees" [width]="200" [allowSorting]="false"
+        cellTemplate="temp">
+    </dxi-column>
+    <div *dxTemplate="let cellInfo of 'temp'">
+        <dx-check-box [value]="true" id="1"></dx-check-box>
+    </div> -->
+    <dxi-column dataField="LastName1" [allowEditing]="false" caption="PPF2" cellTemplate="cellTemplate"></dxi-column>
+    <dxi-column dataField="LastName1" caption="INV" cellTemplate="cellTemplate"></dxi-column>
+    <dxi-column dataField="LastName1" caption="PEE" cellTemplate="cellTemplate"></dxi-column>
+    <div *dxTemplate="let data of 'cellTemplate'">
+        <dx-check-box [(value)]="data.value" [disabled]="false"></dx-check-box>
+    </div>
+</dx-data-grid>

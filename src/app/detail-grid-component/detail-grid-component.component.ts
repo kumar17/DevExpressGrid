@@ -15,32 +15,55 @@ export class DetailGridComponentComponent implements OnInit {
   @Input() key: number;
   tasksDataSource: DataSource;
   tasks: Task[];
-  
+  columns: Columns[];
+  keys: any;
+  list_items: any;
+  selectedRowKeys: any[] = [];
+  recursiveSelectionEnabled = false;
+  test: any;
 
+  employees: any;
 
   constructor(private service: Service) {
     this.tasks = service.getTasks();
-    
+    this.getdata();
 
   }
   ngOnInit(): void {
+    // this.list_items = [{ name: 'PPE', code: '101' }, { name: 'INV', code: '102' },{ name: 'INV', code: '103' }];
+    // this.keys = Object.keys(this.list_items[0]);
+    this.test = [
+      { FirstName1: 'abc', LastName1: 'hii' },
+      { FirstName1: '123', LastName1: 'hello' },
+      { FirstName1: '23423423', LastName1: 'hru' }
+    ]
 
+    this.employees = [
+      { ID: 1, FullName: 'Arun' },
+      { ID: 2, FullName: 'soumya' },
+      { ID: 3, FullName: 'loooe' },
+    ]
 
   }
 
-  customizeColumns(columns) {
-    columns.push({ // Pushes the "Contacts" band column into the "columns" array
-      caption: "Contacts",
-      isBand: true
-    });
-
-    var contactsFields = ["Email", "Mobile_Phone", "Skype"];
-    for (var i = 0; i < columns.length - 1; i++) {
-      if (contactsFields.indexOf(columns[i].dataField) > -1) // If the column belongs to "Contacts",
-        columns[i].ownerBand = columns.length - 1; // assigns "Contacts" as the owner band column
-    }
+  getdata() {
+    this.columns = [
+      {
+        caption: 'PPE', dataType: Boolean, with: 100, calculateCellValue: this.completedValue
+      }, {
+        caption: 'INV', dataType: Boolean, with: 100, calculateCellValue: this.completedValue
+      }, {
+        caption: 'PP2', dataType: Boolean, with: 100, calculateCellValue: this.completedValue
+      },
+    ]
   }
-
+  logMyCommandClick() {
+    console.log('My command was clicked');
+  }
+  setCellValue(newData, value) {
+    let column = (<any>this);
+    column.defaultSetCellValue(newData, value);
+  }
   ngAfterViewInit() {
     this.tasksDataSource = new DataSource({
       store: new ArrayStore({
@@ -49,9 +72,23 @@ export class DetailGridComponentComponent implements OnInit {
       }),
       filter: ["EmployeeID", "=", this.key]
     })
+
+    console.log(this.tasksDataSource);
   }
+
+
   completedValue(rowData) {
     return rowData.Status == "Completed";
   }
 
+}
+
+
+
+export class Columns {
+  dataField?: string;
+  caption: string;
+  with: number;
+  dataType: any;
+  calculateCellValue: any
 }

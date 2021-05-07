@@ -21,6 +21,12 @@ export class Employee {
     State: string;
 }
 
+export class EditorEmployee {
+    text: string;
+    team: string;
+    icon: string;
+}
+
 let employees: Employee[] = [{
     "ID": 1,
     "Prefix": "Mr.",
